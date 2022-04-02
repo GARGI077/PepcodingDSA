@@ -15,5 +15,6 @@ public class PrimeFactorization {
                 n=n/fact;
             }
         }
+        in.close();
     }
 }
