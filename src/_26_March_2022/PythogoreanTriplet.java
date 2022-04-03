@@ -12,13 +12,11 @@ public class PythogoreanTriplet {
         int b=in.nextInt();
         int c=in.nextInt();
 
-        if(a>b&&a>c)
-        {
-            if((a*a)==((b*b)+(c*c)))
+        if((a*a)==((b*b)+(c*c)))
             {
                 System.out.println("true");
             }
-        }
+
         else
             if((b*b)==((a*a)+(c*c)))
             {
