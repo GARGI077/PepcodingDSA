@@ -1,6 +1,7 @@
 package LinkedList;
 
 public class GetValue {
+
     private static class Node{
         int data;
         Node next;
@@ -17,6 +18,7 @@ public class GetValue {
             this.next = next;
         }
     }
+
     private static class LinkedList {
         private Node head, tail;
         private int size;
@@ -36,6 +38,7 @@ public class GetValue {
             }
             this.size++;
         }
+
         public void addLast(int val)  {
            Node temp = new Node();
             temp.data=val;
@@ -54,8 +57,8 @@ public class GetValue {
             }
             size++;
         }
-        public void addAt(int idx,int val)
-        {
+
+        public void addAt(int idx,int val) {
             if(idx<0||idx>size)
             {
                 System.out.println("Invalid arguments");
@@ -85,6 +88,7 @@ public class GetValue {
                 size++;
             }
         }
+
         public int size() {
             return this.size;
         }
@@ -112,18 +116,24 @@ public class GetValue {
 
         }
 
-        public int getValueAt(int idx) {
-            Node temp = head;
+        public int getAt(int idx) {
+
             if (size == 0) {
                 System.out.println("List is Empty");
                 return -1;
             }
-            for(int i=0;i<idx-1;i++)
+            else
             {
-                temp=temp.next;
+                Node temp = head;
+                for(int i=0;i<idx-1;i++)
+                {
+                    temp=temp.next;
+                }
+
+                return temp.data;
             }
-            return temp.data;
         }
+
         public void display() {
             if (this.size == 0)
                 return;
@@ -153,6 +163,7 @@ public class GetValue {
 //        System.out.println(ll.getFirst());
    //     System.out.println(ll.getLast());
         ll.display();
-        System.out.println(ll.getValueAt(4));
+        System.out.println(ll.getAt(4));
+
     }
 }
