@@ -1,25 +1,28 @@
 package LinkedList;
 
-public class GetValue {
-
-    private static class Node{
+public class Reverse {
+    private static class Node {
         int data;
         Node next;
-        Node(){
+
+        Node() {
             data = 0;
             next = null;
         }
-        Node(int data){
+
+        Node(int data) {
             this.data = data;
             this.next = null;
         }
-        Node(int data,Node next){
+
+        Node(int data, Node next) {
             this.data = data;
             this.next = next;
         }
     }
 
     private static class LinkedList {
+
         private Node head, tail;
         private int size;
 
@@ -39,51 +42,40 @@ public class GetValue {
             this.size++;
         }
 
-        public void addLast(int val)  {
-           Node temp = new Node();
-            temp.data=val;
-            temp.next=null;
+        public void addLast(int val) {
+            Node temp = new Node();
+            temp.data = val;
+            temp.next = null;
 
-            if(size ==0)
-            {
-                head=tail=temp;
+            if (size == 0) {
+                head = tail = temp;
                 //size++;
-            }
+            } else {
 
-            else {
-
-                tail.next=temp;
-                tail=temp;
+                tail.next = temp;
+                tail = temp;
             }
             size++;
         }
 
-        public void addAt(int idx,int val) {
-            if(idx<0||idx>size)
-            {
+        public void addAt(int idx, int val) {
+            if (idx < 0 || idx > size) {
                 System.out.println("Invalid arguments");
-            }
-
-            else if (idx==0)
-            {
+            } else if (idx == 0) {
                 addFirst(val);
-            }
-            else if(idx==size)
-            {
+            } else if (idx == size) {
                 addLast(val);
-            }
-            else
-            {
+            } else {
                 Node node = new Node();
-                node.data=val;
-                Node temp=head;
 
-                for(int i=0;i<idx-1;i++)
-                {
-                    temp=temp.next;
+                node.data = val;
+                Node temp = head;
+
+                for (int i = 0; i < idx - 1; i++) {
+                    temp = temp.next;
                 }
-                node.next=temp.next;
-                temp.next=node;
+                node.next = temp.next;
+                temp.next = node;
 
                 size++;
             }
@@ -93,34 +85,11 @@ public class GetValue {
             return this.size;
         }
 
-        public int getFirst() {
-
-            if (size==0)
-            {
-                System.out.println("List is Empty");
-                return -1;
-            }
-            else
-            return head.data;
-        }
-
-        public int getLast() {
-          //  Node node=new Node();
-            if(size==0)
-            {
-                System.out.println("List is Empty");
-                return -1;
-            }
-            else
-                return tail.data;
-
-        }
-
-        public int getAt(int idx) {
+        public Node getAt(int idx) {
 
             if (idx<0||idx>=size) {
                 System.out.println("List is Empty");
-                return -1;
+                return null;
             }
             else
             {
@@ -130,7 +99,25 @@ public class GetValue {
                     temp=temp.next;
                 }
 
-                return temp.data;
+                return temp;
+            }
+        }
+
+       public void reverse(){
+
+            int l=0,r=size-1;
+
+            while(l<r){
+                Node lnode=getAt(l);
+                Node rnode=getAt(r);
+
+                int temp=lnode.data;
+                lnode.data=rnode.data;
+                rnode.data=temp;
+
+                l++;
+                r--;
+
             }
         }
 
@@ -148,19 +135,11 @@ public class GetValue {
             System.out.println();
         }
 
-    public static void main(String[] args) {
+    }
+
+    public static void main(String[] args)throws Exception {
 
         LinkedList ll=new LinkedList();
-
-//        ll.addFirst(1);
-//
-//        ll.addFirst(2);
-//        ll.addLast(10);
-//        ll.addFirst(77);
-//        ll.addAt(3,101);
-//        ll.addAt(5,5);
-////
-//        System.out.println(ll.mid());
         ll.addFirst(10);
 
         ll.addFirst(20);
@@ -175,12 +154,7 @@ public class GetValue {
 
         ll.addFirst(70);
         ll.display();
-        System.out.println(ll.getFirst());
-        System.out.println(ll.getLast());
+        ll.reverse();
         ll.display();
-        System.out.println(ll.getAt(4));
-       // System.out.println(ll.mid());
-
-    }
     }
 }

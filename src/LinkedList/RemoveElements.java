@@ -1,6 +1,6 @@
 package LinkedList;
 
-public class RemoveFirst {
+public class RemoveElements {
     private static class Node{
         int data;
         Node next;
@@ -68,7 +68,69 @@ public class RemoveFirst {
             size--;
 
         }
-    }
+
+        public void removeLast(){
+            // write your code here
+            if (size == 0) {
+                System.out.println("List is empty");
+            }
+            else
+
+            if (size == 1) {
+                head = tail = null;
+                size = 0;
+            }
+            else
+            {
+
+                Node cur=head;
+                while(cur.next!=tail)
+                {
+                    cur=cur.next;
+
+                }
+
+                cur.next=null;
+                tail=cur;
+                size--;
+
+            }
+        }
+
+        public void removeAt(int idx) {
+            // write your code here
+            if(size==0)
+            {
+                System.out.println("List is empty");
+            }
+            else if(idx<0||idx>=size)
+            {
+                System.out.println("Invalid");
+            }
+            else  if(idx==0)
+            {
+                removeFirst();
+            }
+            else if(idx==size-1)
+            {
+                removeLast();
+            }
+            else{
+                Node temp=head;
+                while(idx-1!=0&&temp.next!=null)
+                {
+                    temp=temp.next;
+                    idx--;
+                }
+                temp.next=temp.next.next;
+                size--;
+            }
+        }
+
+
+
+
+}
 
 
     public static void main(String[] args) {
@@ -78,8 +140,13 @@ public class RemoveFirst {
         ll.addFirst(2);
       //  ll.addLast(10);
         ll.addFirst(77);
-        ll.display();
-        ll.removeFirst();
 
+        ll.addFirst(70);
+
+        ll.addFirst(87);
+        ll.display();
+        ll.removeAt(1);
+       // ll.removeFirst();
+        ll.display();
     }
 }
